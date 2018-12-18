@@ -34,18 +34,23 @@
         payMore = Math.ceil(price.value /num.value/unit.value)*unit.value;
         over = Math.abs(price.value - (payMore*num.value));
 
-        if(over === 0 && short === 0){
-            str = `一人${price.value/num.value}円ちょうどです!`;
+        if(unit.value === "5000000000000000"){
+            result.textContent = "5000兆円欲しい！"
         }else{
-            str =
-            `一人${payLess}円だと${short}円足りません。`+
-            `一人${payMore}円だと${over}円余ります。`;
+    
+            if(over === 0 && short === 0){
+                str = `一人${price.value/num.value}円ちょうどです!`;
+            }else{
+                str =
+                `一人${payLess}円だと${short}円足りません。`+
+                `一人${payMore}円だと${over}円余ります。`;
+            }
+            result.textContent = str;
         }
 
         reset.classList.remove('hidden');
 
 
-        result.textContent = str;
     });
 
     price.addEventListener('keyup',checkInput);
